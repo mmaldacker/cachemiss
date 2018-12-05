@@ -1,0 +1,8 @@
+name: "Cachemiss"
+markdown: kramdown
+highlighter: rouge
+permalink: :title
+baseurl: '/blog'
+description: "Programming, GPU, Optimizations, Algorithms"
+author: "Maximilian Maldacker"
+email: "mmaldacker@gmail.com"
