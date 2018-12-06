@@ -6,3 +6,5 @@ baseurl: '/blog'
 description: "Programming, GPU, Optimizations, Algorithms"
 author: "Maximilian Maldacker"
 email: "mmaldacker@gmail.com"
+katex:
+    path_to_js: "./_assets/katex.js"

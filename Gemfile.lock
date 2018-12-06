@@ -9,6 +9,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7-x64-mingw32)
+    execjs (2.7.0)
     ffi (1.9.25-x64-mingw32)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
@@ -71,6 +72,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  execjs
   jekyll (~> 3.8.5)
   jekyll-feed (~> 0.6)
   minima (~> 2.0)
