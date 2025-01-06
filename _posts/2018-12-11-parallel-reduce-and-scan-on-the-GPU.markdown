@@ -46,11 +46,11 @@ Arithmetic is the type of operation we'll need to implement scan and reduce. An 
 
 ### Reduce
 
-Reduce is very simple, it takes a list of elements {% latex %} x_0, x_1, x_2, ... {% endlatex %} and calculates its sum,
+Reduce is very simple, it takes a list of elements $$ x_0, x_1, x_2, ... $$ and calculates its sum,
 
-{% latex centred %} 
+$$
 x = \sum_{i=0}^n x_i
-{% endlatex %}
+$$
 
 C++17 has added it as `std::reduce` which can be run in parallel or sequentially. We'll use it to compare the performance with the one running on the GPU.
 The equivalent operation in Vulkan for subgroups is:
@@ -116,16 +116,16 @@ That's rather disapointing, the subgroup based reduce is only slightly faster. H
 
 ### Scan
 
-Scan, or prefix sum, takes a list of elements {% latex %} x_0, x_1, x_2, ... {% endlatex %} and produces a sequence of elements {% latex %} y_0, y_1, y_2, ... {% endlatex %} such that,
+Scan, or prefix sum, takes a list of elements $$ x_0, x_1, x_2, ... $$ and produces a sequence of elements $$ y_0, y_1, y_2, ... $$ such that,
 
-{% latex centred %}
+$$
 \begin{aligned}
 y_0 &= x_0 \\
 y_1 &= x_0 + x_1 \\
 y_2 &= x_0 + x_1 + x_2 \\
 &...
 \end{aligned}
-{% endlatex %}
+$$
 
 Again, this is available in C++17 with `std::inclusive_scan`, which we'll use to compare with the GPU equivalent one.
 The vulkan subgroup operation is,
@@ -144,7 +144,7 @@ We'll use a similar strategy as for reduce to be able to scan over a bigger numb
 
 This works because the scan at each subgroup is the scan of the subgroup plus the total sum of every element before. If we look at the equation above and assume a subgroup size of 2, we can look at the calculation as so,
 
-{% latex centred %}
+$$
 \begin{aligned}
 y_0 &= x_0 \\
 y_1 &= x_0 + x_1 \\
@@ -154,7 +154,7 @@ y_4 &= x_0 + x_1 + x_2 + x_3 + x_4 &=& y_3 + x_4 \\
 y_4 &= x_0 + x_1 + x_2 + x_3 + x_4 + x_5 &=& y_3 + x_4 + x_5 \\
 &...
 \end{aligned}
-{% endlatex %}
+$$
 
 which corresponds to the algorithm described.
 
